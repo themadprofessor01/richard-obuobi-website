@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { MapPin, Calendar, ArrowRight, ChevronDown } from 'lucide-react'
+import { MapPin, Calendar, ArrowRight, ExternalLink } from 'lucide-react'
 
 const roles = [
   {
@@ -11,6 +11,7 @@ const roles = [
     location: 'Accra, Ghana',
     type: 'Full-time',
     badge: 'Mastercard Foundation',
+    context: 'Current executive programme leadership role focused on institutional resilience and financial inclusion.',
     bullets: [
       'Leading the implementation of a 4-year Financial Institutional and Resilience Strengthening (FIRST+II) Programme in partnership with the Mastercard Foundation.',
       "Driving institutional resilience and advancing financial inclusion across Ghana's rural banks and financial institutions.",
@@ -25,6 +26,7 @@ const roles = [
     location: 'Accra, Greater Accra Region, Ghana',
     type: 'Full-time',
     badge: 'USAID / GTI',
+    context: 'Donor-funded investment and transaction advisory role serving private-sector growth objectives in Ghana.',
     bullets: [
       'Directed investment and transactions work stream for the USAID-funded Feed the Future Ghana Trade and Investment Activity (GTI).',
       'Supported Ghanaian firms to attract investment, access finance and grow into new markets.',
@@ -33,12 +35,13 @@ const roles = [
   },
   {
     id: 2,
-    title: 'Co-Founder & Group Managing Director',
+    title: 'Co-Founder & Group Managing Director / Consultant',
     org: 'Impact Risk Analytics',
     period: 'Jan 2015 – Apr 2022',
     location: 'Nairobi, Kenya',
     type: 'Entrepreneur',
     badge: '7 yrs 4 mos',
+    context: 'Founder/operator role combining risk analytics, advisory practice development and professional training delivery.',
     bullets: [
       'Co-founded a risk analytics firm delivering risk model development, capital estimation, regulatory reporting and risk advisory to financial institutions.',
       'Led development of Business Analytics, ESG advisory, impact investing advisory and PPP practice.',
@@ -54,6 +57,7 @@ const roles = [
     location: 'Accra, Greater Accra Region, Ghana',
     type: 'Contract',
     badge: 'AfCFTA',
+    context: 'Short-term specialist assignment supporting trade finance and resource mobilisation planning.',
     bullets: [
       'Reviewed Adjustment Facilities for tariff loss in different regions under the African Continental Free Trade Area (AfCFTA).',
       'Structured financing mechanisms to access funding, technical assistance and capacity building.',
@@ -69,6 +73,7 @@ const roles = [
     location: 'Nairobi, Kenya',
     type: 'Contract',
     badge: 'AgriFinance',
+    context: 'Independent investment committee role assessing fund proposals through both finance and impact lenses.',
     bullets: [
       'Served on the independent investment committee for a blended finance agricultural fund focused on smallholder farmers in Kenya.',
       'Reviewed and assessed investment proposals against fund criteria, risk and impact parameters.',
@@ -82,6 +87,7 @@ const roles = [
     location: 'Accra, Ghana',
     type: 'Contract',
     badge: 'GIZ',
+    context: 'Public-sector advisory mandate covering housing finance, capital markets infrastructure and market-development policy.',
     bullets: [
       'Led the implementation of a Housing and Mortgage Finance Scheme.',
       'Led the development of a Credit Rating Agency for Ghana.',
@@ -99,6 +105,7 @@ const roles = [
     location: 'East Africa',
     type: 'Full-time',
     badge: 'SPRING',
+    context: 'Regional investment-readiness mandate preparing growth businesses for investor engagement.',
     bullets: [
       'Managed investment readiness support for businesses in the SPRING Accelerator portfolio across East Africa.',
       'Prepared businesses for investor engagement through financial structuring, documentation and pitch support.',
@@ -112,6 +119,7 @@ const roles = [
     location: 'Accra, Ghana & East Africa',
     type: 'Contract',
     badge: 'AfDB',
+    context: 'Development finance consulting assignment spanning Ghana and East African advisory work.',
     bullets: [
       'Provided consulting services to the African Development Bank across Ghana and East Africa.',
       'Supported financial sector advisory and development finance assignments.',
@@ -125,8 +133,9 @@ const roles = [
     location: 'Nairobi, Kenya',
     type: 'Entrepreneur',
     badge: '2 yrs 2 mos',
+    context: 'Co-founder role building a governance, risk and compliance training platform for African capital markets.',
     bullets: [
-      'Co-founded a boutique GRC advisory, training and capacity-building institution with operations across Africa.',
+      'Co-founded a boutique GRC (Governance, Risk and Compliance) advisory, training and capacity-building institution with operations across Africa.',
       'Led strategy for open and in-house risk training in market risk, credit risk and operational/integrated risk.',
       'Served as an approved GARP FRM, ERP, FBR and ICRR exam preparation provider.',
       'Delivered risk training in Accra, Lagos, Nairobi, Harare and Johannesburg.',
@@ -140,6 +149,7 @@ const roles = [
     location: 'Nairobi, Kenya',
     type: 'Full-time',
     badge: 'SNV',
+    context: 'Enterprise-development and impact-investment advisory role across agriculture, renewable energy and WASH sectors.',
     bullets: [
       'Led enterprise development of SMEs in Kenya across Agriculture, Renewable Energy and WASH sectors.',
       'Liaised with social impact investors to assess Small and Growing Businesses in selected value chains.',
@@ -156,18 +166,60 @@ const roles = [
     type: 'Full-time',
     badge: '$10.3M mobilised',
     highlight: true,
+    context: 'Regional investment advisory portfolio where Richard led deal flow, diagnosis and investor documentation across nine markets.',
     bullets: [
       'Led pipeline development and deal flow across Ethiopia, Kenya, Mozambique, Rwanda, South Sudan, Tanzania, Uganda, Zambia and Zimbabwe.',
       'Performed financial analysis, due diligence and investment structuring for SGBs.',
       'Conducted business diagnosis and recommendations leading to 17 Small and Growing Businesses accessing USD $10.3M over an 18-month period.',
-      'Developed investment proposals for PE firms and fund managers focused on Agriculture and Renewable Energy.',
+      'Developed investment proposals for PE firms and fund managers focused on Agriculture and Renewable Energy in East and Southern Africa.',
     ],
+  },
+]
+
+const credentials = [
+  {
+    title: 'MSc, Actuarial Science',
+    org: 'Heriot-Watt University',
+    period: '2003 - 2004',
+    type: 'Degree',
+    context: 'Graduate quantitative training for actuarial modelling, pricing and risk analysis.',
+  },
+  {
+    title: 'Financial Risk Manager (FRM)',
+    org: 'Global Association of Risk Professionals (GARP)',
+    period: '2010 - 2012',
+    type: 'Certification',
+    context: 'Professional financial risk credential covering market, credit, operational and integrated risk.',
+    href: 'https://www.garp.org/',
+  },
+  {
+    title: 'Energy Risk Professional (ERP)',
+    org: 'Global Association of Risk Professionals (GARP)',
+    period: 'Credential held',
+    type: 'Certification',
+    context: 'Energy and commodity risk training applied to capital markets and risk advisory work.',
+    href: 'https://www.garp.org/',
+  },
+  {
+    title: 'Sustainability & Climate Risk (SCR)',
+    org: 'GARP',
+    period: 'Issued Nov 2024',
+    type: 'Certification',
+    context: 'Climate risk credential for physical risk, transition risk and sustainability governance.',
+    href: 'https://www.garp.org/scr',
+  },
+  {
+    title: 'NatCat Modelling Masterclass',
+    org: 'GARP + Fathom (Flood Risk)',
+    period: 'Issued Aug 2025',
+    type: 'Certification',
+    context: 'Specialist natural catastrophe and flood-risk modelling training for resilience work.',
+    href: 'https://www.garp.org/scr',
   },
 ]
 
 export default function Experience() {
   const [active, setActive] = useState(0)
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     document.title = 'Experience – Richard A Obuobi, FRM, ERP, SCR'
@@ -176,84 +228,42 @@ export default function Experience() {
 
   const role = roles[active]
 
-  const handleSelect = (id) => {
-    setActive(id)
-    setMobileOpen(false)
-    // Scroll to detail panel on mobile
-    setTimeout(() => {
-      document.getElementById('role-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 100)
-  }
-
   return (
     <>
       {/* Hero */}
-      <section className="bg-deep-navy pt-24 pb-10 md:pt-36 md:pb-16">
+      <section className="bg-deep-navy pt-24 pb-14 md:pt-36 md:pb-20">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
-          <span className="inline-block font-manrope text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-            Career History
-          </span>
-          <h1 className="font-playfair text-3xl md:text-5xl text-ivory mb-3 md:mb-4">
-            15+ Years Across<br />
-            <span className="text-gold">Africa, Europe & Beyond</span>
-          </h1>
-          <p className="font-inter text-ivory/60 text-base md:text-lg max-w-2xl">
-            From founding risk advisory firms to directing national capital market policy — a track record built role by role.
-          </p>
+          <div>
+            <span className="inline-block font-manrope text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+              Career History
+            </span>
+            <h1 className="font-playfair text-3xl md:text-5xl text-ivory mb-4 leading-tight">
+              15+ Years Across<br />
+              <span className="text-gold">Africa, Europe & Beyond</span>
+            </h1>
+            <p className="font-inter text-ivory/70 text-base md:text-lg max-w-2xl leading-relaxed">
+              From founding risk advisory firms to directing national capital market policy — a track record built role by role.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="bg-white py-10 md:py-20">
+      {/* Interactive timeline */}
+      <section className="bg-white py-14 md:py-24">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
-
-          {/* ── Mobile: dropdown selector ── */}
-          <div className="lg:hidden mb-6">
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="w-full flex items-center justify-between bg-navy text-ivory px-5 py-4 rounded-xl"
-              aria-expanded={mobileOpen}
-            >
-              <div className="text-left">
-                <p className="font-manrope text-gold text-xs font-semibold">{role.period.split('–')[0].trim()}</p>
-                <p className="font-playfair text-ivory text-sm font-semibold">{role.title}</p>
-                <p className="font-inter text-ivory/60 text-xs">{role.org}</p>
-              </div>
-              <ChevronDown size={18} className={`text-gold shrink-0 transition-transform ${mobileOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            {mobileOpen && (
-              <div className="mt-1 rounded-xl border border-gray-100 shadow-lg overflow-hidden max-h-72 overflow-y-auto">
-                {roles.map(r => (
-                  <button
-                    key={r.id}
-                    onClick={() => handleSelect(r.id)}
-                    className={`w-full text-left px-5 py-3.5 border-b border-gray-50 last:border-0 transition-colors ${
-                      active === r.id ? 'bg-navy/5 text-navy' : 'bg-white text-charcoal hover:bg-ivory'
-                    }`}
-                  >
-                    <p className="font-manrope text-xs font-semibold text-gold">{r.period.split('–')[0].trim()}</p>
-                    <p className="font-playfair text-sm font-semibold leading-snug">{r.title}</p>
-                    <p className="font-inter text-xs text-muted-gray">{r.org}</p>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* ── Desktop: sidebar + panel ── */}
           <div className="flex flex-col lg:flex-row gap-8">
-
-            {/* Sidebar (desktop only) */}
-            <aside className="hidden lg:block lg:w-80 shrink-0">
+            {/* Sidebar */}
+            <aside className="lg:w-80 shrink-0">
               <nav aria-label="Career timeline">
-                <ul className="space-y-1">
-                  {roles.map(r => (
-                    <li key={r.id}>
+                <ul className="flex gap-2 overflow-x-auto pb-2 lg:block lg:space-y-1 lg:overflow-visible lg:pb-0">
+                  {roles.map((r) => (
+                    <li key={r.id} className="min-w-[220px] lg:min-w-0">
                       <button
                         onClick={() => setActive(r.id)}
-                        className={`w-full text-left px-5 py-4 rounded-xl transition-all ${
-                          active === r.id ? 'bg-navy text-ivory shadow-glass' : 'text-charcoal hover:bg-ivory'
+                        className={`w-full text-left px-4 py-4 rounded-lg transition-all ${
+                          active === r.id
+                            ? 'bg-navy text-ivory shadow-glass'
+                            : 'text-charcoal hover:bg-ivory'
                         }`}
                       >
                         <p className={`font-manrope text-xs font-semibold tracking-wide mb-0.5 ${active === r.id ? 'text-gold' : 'text-muted-gray'}`}>
@@ -273,35 +283,52 @@ export default function Experience() {
             </aside>
 
             {/* Detail panel */}
-            <div className="flex-1" id="role-detail">
-              <div key={active} className="rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div className="flex-1">
+              <div
+                key={active}
+                className="rounded-lg border border-gray-100 shadow-sm overflow-hidden"
+              >
                 {/* Header */}
-                <div className={`p-5 md:p-8 ${role.highlight ? 'bg-navy' : 'bg-deep-navy'}`}>
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-3 md:mb-4">
-                    <div className="flex-1 min-w-0">
-                      <h2 className="font-playfair text-xl md:text-3xl text-ivory font-semibold leading-tight">{role.title}</h2>
-                      <p className="font-manrope text-gold text-sm md:text-base font-medium mt-1">{role.org}</p>
+                <div className={`p-6 md:p-8 ${role.highlight ? 'bg-navy' : 'bg-deep-navy'}`}>
+                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                    <div>
+                      <h2 className="font-playfair text-2xl md:text-3xl text-ivory font-semibold leading-tight">{role.title}</h2>
+                      <p className="font-manrope text-gold text-base font-medium mt-1">{role.org}</p>
                     </div>
-                    <span className={`shrink-0 font-manrope text-xs font-bold px-3 py-1.5 rounded-full ${
-                      role.highlight ? 'bg-gold text-deep-navy' : 'text-gold border border-gold/30'
-                    }`}>
-                      {role.badge}
-                    </span>
+                    {role.highlight && (
+                      <span className="inline-block font-manrope text-xs font-bold bg-gold text-deep-navy px-4 py-2 rounded-full">
+                        {role.badge}
+                      </span>
+                    )}
+                    {!role.highlight && (
+                      <span className="inline-block font-manrope text-xs font-semibold text-gold border border-gold/30 px-3 py-1.5 rounded-full">
+                        {role.badge}
+                      </span>
+                    )}
                   </div>
-                  <div className="flex flex-wrap gap-3 md:gap-5 font-inter text-xs md:text-sm text-ivory/60">
+                  <div className="flex flex-wrap gap-5 font-inter text-sm text-ivory/60">
                     <span className="flex items-center gap-1.5">
-                      <Calendar size={13} className="text-gold" /> {role.period}
+                      <Calendar size={14} className="text-gold" /> {role.period}
                     </span>
                     <span className="flex items-center gap-1.5">
-                      <MapPin size={13} className="text-gold" /> {role.location}
+                      <MapPin size={14} className="text-gold" /> {role.location}
                     </span>
                     <span className="text-gold/70">{role.type}</span>
                   </div>
+                  <p className="font-inter text-ivory/70 text-sm leading-relaxed mt-5 max-w-3xl">{role.context}</p>
+                  <a
+                    href="https://www.linkedin.com/in/robuobi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-manrope text-xs font-semibold text-gold mt-4 hover:text-ivory transition-colors"
+                  >
+                    Public profile context <ExternalLink size={13} />
+                  </a>
                 </div>
 
                 {/* Bullets */}
-                <div className="p-5 md:p-8 bg-white">
-                  <ul className="space-y-3 md:space-y-4">
+                <div className="p-6 md:p-8 bg-white">
+                  <ul className="space-y-4">
                     {role.bullets.map((b, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
@@ -313,18 +340,18 @@ export default function Experience() {
               </div>
 
               {/* Nav arrows */}
-              <div className="flex gap-3 mt-4 justify-between sm:justify-end">
+              <div className="flex gap-3 mt-5 justify-end">
                 <button
-                  onClick={() => { setActive(Math.max(0, active - 1)); document.getElementById('role-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
+                  onClick={() => setActive(Math.max(0, active - 1))}
                   disabled={active === 0}
-                  className="flex-1 sm:flex-none font-manrope text-sm text-charcoal border border-gray-200 px-4 py-2.5 rounded hover:border-gold hover:text-gold transition-colors disabled:opacity-30 text-center"
+                  className="font-manrope text-sm text-charcoal border border-gray-200 px-4 py-2 rounded hover:border-gold hover:text-gold transition-colors disabled:opacity-30"
                 >
                   ← Previous
                 </button>
                 <button
-                  onClick={() => { setActive(Math.min(roles.length - 1, active + 1)); document.getElementById('role-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
+                  onClick={() => setActive(Math.min(roles.length - 1, active + 1))}
                   disabled={active === roles.length - 1}
-                  className="flex-1 sm:flex-none font-manrope text-sm text-charcoal border border-gray-200 px-4 py-2.5 rounded hover:border-gold hover:text-gold transition-colors disabled:opacity-30 text-center"
+                  className="font-manrope text-sm text-charcoal border border-gray-200 px-4 py-2 rounded hover:border-gold hover:text-gold transition-colors disabled:opacity-30"
                 >
                   Next →
                 </button>
@@ -335,25 +362,45 @@ export default function Experience() {
       </section>
 
       {/* Education & Certifications */}
-      <section className="bg-ivory py-12 md:py-20">
+      <section className="bg-ivory py-14 md:py-24">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <span className="gold-line mb-5" />
-          <h2 className="font-playfair text-2xl md:text-3xl text-charcoal mb-8 md:mb-10">Education & Certifications</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-            {[
-              { title: 'MSc, Actuarial Science', org: 'Heriot-Watt University', period: '2003 – 2004', type: 'Degree' },
-              { title: 'Financial Risk Manager (FRM)', org: 'Global Association of Risk Professionals (GARP)', period: '2010 – 2012', type: 'Certification' },
-              { title: 'Energy Risk Professional (ERP)', org: 'Global Association of Risk Professionals (GARP)', period: '', type: 'Certification' },
-              { title: 'Sustainability & Climate Risk (SCR)', org: 'GARP', period: 'Issued Nov 2024', type: 'Certification' },
-              { title: 'NatCat Modelling Masterclass', org: 'GARP + Fathom (Flood Risk)', period: 'Issued Aug 2025', type: 'Certification' },
-            ].map((e, i) => (
-              <div key={i} className="bg-white rounded-xl p-5 md:p-6 border border-gray-100 shadow-sm">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+            <div>
+              <h2 className="font-playfair text-2xl md:text-3xl text-charcoal mb-3">Education & Certifications</h2>
+              <p className="font-inter text-muted-gray text-sm leading-relaxed max-w-2xl">
+                Credentials are paired with context and official issuing-body links where useful, without implying third-party verification beyond the linked organisations.
+              </p>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/robuobi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-manrope text-xs font-semibold text-navy hover:text-gold transition-colors"
+            >
+              View public profile <ExternalLink size={13} />
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {credentials.map((e, i) => (
+              <div key={i} className="bg-white rounded-lg p-6 border border-gray-100 shadow-sm flex flex-col">
                 <span className="inline-block font-manrope text-xs font-semibold text-gold bg-gold/10 px-2.5 py-1 rounded mb-3">
                   {e.type}
                 </span>
-                <h3 className="font-playfair text-charcoal font-semibold text-sm md:text-base mb-1">{e.title}</h3>
+                <h3 className="font-playfair text-charcoal font-semibold mb-2 leading-snug">{e.title}</h3>
                 <p className="font-inter text-muted-gray text-sm">{e.org}</p>
-                {e.period && <p className="font-manrope text-muted-gray text-xs mt-1">{e.period}</p>}
+                <p className="font-manrope text-muted-gray text-xs mt-1">{e.period}</p>
+                <p className="font-inter text-charcoal/70 text-sm leading-relaxed mt-4 flex-1">{e.context}</p>
+                {e.href && (
+                  <a
+                    href={e.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-manrope text-xs font-semibold text-navy mt-5 hover:text-gold transition-colors"
+                  >
+                    Issuing body <ExternalLink size={13} />
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -361,15 +408,16 @@ export default function Experience() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gold py-12 md:py-16">
+      <section className="bg-white py-16">
         <div className="max-w-3xl mx-auto px-5 text-center">
-          <h2 className="font-playfair text-2xl md:text-3xl text-deep-navy mb-3 md:mb-4">{"Seen enough?"}</h2>
-          <p className="font-inter text-deep-navy/70 mb-6 md:mb-8 text-sm md:text-base">{"Let's discuss how Richard's track record can serve your organisation."}</p>
+          <span className="gold-line mx-auto mb-5" />
+          <h2 className="font-playfair text-2xl md:text-3xl text-charcoal mb-4">Seen enough?</h2>
+          <p className="font-inter text-muted-gray mb-8 leading-relaxed">{"Let's discuss how Richard's track record can serve your organisation."}</p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 font-manrope font-bold bg-deep-navy text-ivory px-7 py-3.5 rounded hover:bg-navy transition-colors text-sm md:text-base"
+            className="inline-flex items-center gap-2 font-manrope font-bold bg-navy text-ivory px-8 py-4 rounded hover:bg-deep-navy transition-colors"
           >
-            Start a Conversation <ArrowRight size={17} />
+            Start a Conversation <ArrowRight size={18} />
           </Link>
         </div>
       </section>

@@ -54,9 +54,9 @@
 
   /* Reveal animation */
   .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
 
   .reveal.visible {
@@ -74,9 +74,17 @@
 
   /* Focus rings for accessibility */
   a:focus-visible,
-  button:focus-visible {
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
     outline: 2px solid #E8B93A;
     outline-offset: 3px;
     border-radius: 4px;
+  }
+
+  ::selection {
+    background: #E8B93A;
+    color: #0B1F3A;
   }
 }

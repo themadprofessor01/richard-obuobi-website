@@ -20,6 +20,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    if (!open) return undefined
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [open])
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
@@ -32,10 +43,11 @@ export default function Navbar() {
         {/* Monogram logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 group"
-          aria-label="Richard A Obuobi – Home"
+          className="flex min-h-11 items-center gap-2 group rounded-sm"
+          aria-label="Richard A Obuobi home"
+          onClick={() => setOpen(false)}
         >
-          <span className="w-9 h-9 rounded-full bg-gold flex items-center justify-center font-manrope font-bold text-deep-navy text-sm select-none">
+          <span className="w-10 h-10 rounded-full bg-gold flex items-center justify-center font-manrope font-bold text-deep-navy text-sm select-none">
             RAO
           </span>
           <span className="hidden sm:block font-playfair text-ivory text-base leading-tight">
@@ -54,7 +66,7 @@ export default function Navbar() {
                 to={to}
                 end={to === '/'}
                 className={({ isActive }) =>
-                  `font-manrope text-sm font-medium tracking-wide transition-colors ${
+                  `rounded-sm font-manrope text-sm font-medium tracking-wide transition-colors ${
                     isActive
                       ? 'text-gold'
                       : 'text-ivory/80 hover:text-ivory'
@@ -70,44 +82,54 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           to="/contact"
-          className="hidden md:inline-flex font-manrope text-sm font-semibold bg-gold text-deep-navy px-5 py-2.5 rounded hover:bg-yellow-400 transition-colors"
+          className="hidden md:inline-flex min-h-11 items-center rounded bg-gold px-5 py-2.5 font-manrope text-sm font-semibold text-deep-navy transition-colors hover:bg-yellow-400"
         >
           Work Together
         </Link>
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-ivory p-2"
+          type="button"
+          className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded text-ivory transition-colors hover:bg-white/10"
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
         </button>
       </nav>
 
       {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden bg-deep-navy border-t border-gold/20 px-6 py-6 space-y-4">
-          {links.map(({ to, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={to === '/'}
-              onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                `block font-manrope text-base font-medium py-2 border-b border-white/10 ${
-                  isActive ? 'text-gold' : 'text-ivory/80'
-                }`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
+        <div
+          id="mobile-navigation"
+          className="md:hidden bg-deep-navy border-t border-gold/20 px-5 py-5 shadow-2xl"
+        >
+          <ul className="space-y-1" aria-label="Mobile navigation">
+            {links.map(({ to, label }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  end={to === '/'}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `flex min-h-11 items-center rounded px-3 font-manrope text-base font-medium transition-colors ${
+                      isActive
+                        ? 'bg-gold/10 text-gold'
+                        : 'text-ivory/85 hover:bg-white/10 hover:text-ivory'
+                    }`
+                  }
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
           <Link
             to="/contact"
             onClick={() => setOpen(false)}
-            className="block mt-4 font-manrope font-semibold bg-gold text-deep-navy px-5 py-3 rounded text-center"
+            className="mt-5 flex min-h-12 items-center justify-center rounded bg-gold px-5 py-3 text-center font-manrope font-semibold text-deep-navy transition-colors hover:bg-yellow-400"
           >
             Work Together
           </Link>
