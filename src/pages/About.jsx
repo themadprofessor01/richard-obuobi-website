@@ -119,7 +119,6 @@ export default function About() {
                   loading="lazy"
                   onError={e => { e.target.style.display = 'none' }}
                 />
-                <span className="absolute font-playfair text-6xl text-gold font-bold opacity-20">RAO</span>
               </div>
               <div className="absolute -bottom-4 -right-4 bg-gold rounded-xl px-5 py-3 shadow-gold">
                 <p className="font-manrope text-deep-navy text-xs font-bold uppercase tracking-widest">Education</p>

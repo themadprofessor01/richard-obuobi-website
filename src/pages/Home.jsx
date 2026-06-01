@@ -118,7 +118,6 @@ export default function Home() {
                   height="384"
                   onError={e => { e.target.style.display = 'none' }}
                 />
-                <span className="absolute font-playfair text-6xl text-gold font-bold opacity-30">RAO</span>
               </div>
               <div className="absolute -bottom-4 -left-4 bg-navy/90 backdrop-blur-md rounded-xl px-5 py-3 border border-gold/30">
                 <p className="font-manrope text-xs text-ivory/60 uppercase tracking-widest">Currently</p>
